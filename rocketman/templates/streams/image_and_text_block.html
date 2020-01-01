@@ -1,0 +1,38 @@
+{% load static wagtailimages_tags %}
+
+<!-- Image and Text Block -->
+<div class="my-4">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class='cc-iat cc-iat--{{ self.image_alignment }}'>
+        <div class="cc-iat-image">
+          {% if self.link.url %}
+            <a href="{{ self.link.url }}" class="d-block">
+          {% endif %}
+            <picture>
+              {% image self.image fill-786x552 as img %}
+              <img src="{{ img.url }}" alt="{{ img.alt }}" style='width: 100%; height: auto;'>
+            </picture>
+          {% if self.link.url %}
+            </a>
+          {% endif %}
+        </div>
+        <div class="cc-iat-image-content" style='background-image: url("{% static 'images/grey-pattern.png' %}")'>
+          <h3 class="cc-iat-title">{{ self.title }}</h3>
+          {% if self.text %}
+            <p class="cc-iat-text">
+              {{ self.text }}
+            </p>
+          {% endif %}
+
+          {% if self.link.url %}
+            <a href="{{ self.link.url }}" class="btn btn-light btn-lg" style='padding-left: 3rem; padding-right: 3rem;'>
+              {{ self.link.link_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Image and Text Block -->

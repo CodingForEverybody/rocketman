@@ -1,0 +1,60 @@
+# Python
+*.py[cod]
+*.egg*
+local_dev.py
+.mypy_cache
+__pycache__/
+
+# Editors
+.idea/
+.vscode/
+
+*.swp
+*.pyc
+.DS_Store
+/.coverage
+/dist/
+/build/
+/MANIFEST
+/wagtail.egg-info/
+/docs/_build/
+/.tox/
+/venv
+/node_modules/
+npm-debug.log*
+*.idea/
+/*.egg/
+/.cache/
+/.pytest_cache/
+/media/
+/rocketmanvenv/
+.venv/
+
+### JetBrains
+.idea/
+*.iml
+*.ipr
+*.iws
+coverage/
+client/node_modules
+
+### Databases
+*.sqlite3
+
+### Local static files
+/static/
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+*~
+*.todo
+
+
+# Local files
+local.py
+.env
+
+nginx-error.log
+

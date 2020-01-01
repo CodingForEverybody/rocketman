@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="cc-inner-title">{{ page.title }}</h1>
+    </div>
+  </div>
+
+  {% for block in page.body %}
+    {% include_block block %}
+  {% endfor %}
+{% endblock content %}

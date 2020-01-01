@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+wagtail = "<2.8,>=2.7"
+Django = ">=2.2,<2.3"
+django-extensions = "==2.2.1"
+django-widget-tweaks = "==1.4.5"
+sentry-sdk = "==0.13.5"
+django-debug-toolbar = "==2.1"
+pudb = "==2019.2"
+
+[requires]
+python_version = "3.7"

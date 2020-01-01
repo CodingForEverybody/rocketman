@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load wagtailimages_tags wagtailcore_tags %}
+
+
+{% block content %}
+  <div class="row mb-3">
+    <div class="col-lg-6">
+      <h1 class="cc-inner-title">{{ page.title }}</h1>
+      <p class="cc-inner-subtitle cc-service-subtitle">
+        {{ page.description }}
+      </p>
+
+      {% if page.internal_page or page.external_page %}
+        <a href="{% if page.internal_page %}{{ page.internal_page.url }}{% elif page.external_page %}{{ page.external_page }}{% else %}#{% endif %}" class="btn btn-primary btn-lg mb-2 mb-lg-0">
+          {{ page.button_text }}
+        </a>
+      {% endif %}
+    </div>
+    <div class="col-lg-6">
+      <picture>
+        {% image page.service_image fill-573x369 as img %}
+        <img src="{{ img.url }}" style='width: 100%; height: auto;' alt="{{ img.alt }}">
+      </picture>
+    </div>
+  </div>
+
+  {% for block in page.body %}
+    {% include_block block %}
+  {% endfor %}
+{% endblock %}

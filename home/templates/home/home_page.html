@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags wagtailcore_tags cache %}
+
+{% block banner %}
+
+  {% image page.banner_background_image fill-1600x800 as bg_img %}
+
+  <div class="jumbotron jumbotron-fluid text-light py-5 d-flex align-items-center cc-home-banner" style='background: linear-gradient(180.43deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.80) 100%), url({{ bg_img.url }});'>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-8 col-lg-9">
+          <h1 class="display-3 cc-home-banner-title">{{ page.title }}</h1>
+            {% if page.lead_text %}
+              <p class="lead">{{ page.lead_text }}</p>
+            {% endif %}
+
+            {% if page.button %}
+              <p class="mt-3">
+                <a href="{{ page.button.url }}" class="btn btn-light btn-lg">
+                  {{ page.button_text }}
+                </a>
+              </p>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock banner %}
+
+{% block content %}
+
+  {% if not request.is_preview %}
+    {# LIVE #}
+    {% cache 2592000 home_page_streams page.id %}
+      {% for block in page.body %}
+        {% include_block block %}
+      {% endfor %}
+    {% endcache %}
+  {% else %}
+    {# PREVIEW #}
+    {% for block in page.body %}
+      {% include_block block %}
+    {% endfor %}
+  {% endif %}
+
+{% endblock content %}

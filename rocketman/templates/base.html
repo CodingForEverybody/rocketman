@@ -1,0 +1,61 @@
+{% load static wagtailuserbar %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}- {{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+        </title>
+        <meta name="description" content="{% if self.search_description %}{{ self.search_description }}{% else %}The best re-usable rocket performance maintenance service on Earth.{% endif %}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta property="og:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% with self.get_site.site_name as site_name %}{% if site_name %}- {{ site_name }}{% endif %}{% endwith %}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="//{{ request.site.hostname }}" />
+        <meta property="og:image" content="//{{ request.site.hostname }}{% static 'images/facebook-og.png' %}" />
+        <meta property="og:description" content="{% if self.search_description %}{{ self.search_description }}{% else %}The best re-usable rocket performance maintenance service on Earth.{% endif %}" />
+        <meta property="og:site_name" content="Rocketman" />
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %} | {{ request.site.site_name }}">
+        <meta name="twitter:description" content="{% if self.search_description %}{{ self.search_description }}{% else %}The best re-usable rocket performance maintenance service on Earth.{% endif %}">
+        <meta name="twitter:image:src" content="//{{ request.site.hostname }}{% static 'images/twitter-og.png' %}">
+
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body>
+        {% wagtailuserbar %}
+
+        {% include "includes/header.html" %}
+
+        {% block banner %}{% endblock %}
+
+        <main id="content" class="container my-4" role="main">
+          {% block content %}{% endblock %}
+        </main>
+
+        {% include "includes/footer.html" %}
+
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

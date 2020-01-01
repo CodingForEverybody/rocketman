@@ -1,0 +1,60 @@
+{% load wagtailimages_tags table_block_tags %}
+
+<!-- Pricing Table Block -->
+<div class="table-responsive d-block my-4">
+  <table role="table" class="table">
+      {% if table_header %}
+          <thead>
+              <tr>
+                  {% for column in table_header %}
+                      {% with forloop.counter0 as col_index %}
+                          <th style='{% if col_index == 0 %}min-width: 300px;{% else %}min-width: 170px;{% endif %} text-align: center;' scope="col" {% cell_classname 0 col_index %}>
+                              {% if column.strip %}
+                                  {% if html_renderer %}
+                                      {{ column.strip|safe|linebreaksbr }}
+                                  {% else %}
+                                      {{ column.strip|linebreaksbr }}
+                                  {% endif %}
+                              {% endif %}
+                          </th>
+                      {% endwith %}
+                  {% endfor %}
+              </tr>
+          </thead>
+      {% endif %}
+      <tbody>
+      {% for row in data %}
+        {% with forloop.counter0 as row_index %}
+            <tr>
+                {% for column in row %}
+                    {% with forloop.counter0 as col_index %}
+                        {% if first_col_is_header and forloop.first %}
+                            <th scope="row" {% if col_index > 0 %} class="text-center"{% endif %} {% cell_classname row_index col_index table_header %}>
+                                {% if column.strip %}
+                                    {% if html_renderer %}
+                                        {{ column.strip|safe|linebreaksbr }}
+                                    {% else %}
+                                        {{ column.strip|linebreaksbr }}
+                                    {% endif %}
+                                {% endif %}
+                            </th>
+                        {% else %}
+                            <td {% if col_index > 0 %} class="text-center"{% endif %} {% cell_classname row_index col_index table_header %}>
+                                {% if column.strip %}
+                                    {% if html_renderer %}
+                                        {{ column.strip|safe|linebreaksbr }}
+                                    {% else %}
+                                        {{ column.strip|linebreaksbr }}
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                    {% endwith %}
+                {% endfor %}
+            </tr>
+        {% endwith %}
+      {% endfor %}
+      </tbody>
+  </table>
+</div>
+<!-- End Pricing Table Block -->

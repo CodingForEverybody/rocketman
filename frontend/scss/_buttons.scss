@@ -1,0 +1,155 @@
+// stylelint-disable selector-no-qualifying-type
+
+//
+// Base styles
+//
+
+.btn {
+  display: inline-block;
+  font-family: $btn-font-family;
+  font-weight: $btn-font-weight;
+  color: $body-color;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: transparent;
+  border: $btn-border-width solid transparent;
+  letter-spacing: 1.75px;
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
+  @include transition($btn-transition);
+  text-transform: uppercase;
+
+  @include hover {
+    color: $body-color;
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    @include box-shadow($btn-active-box-shadow);
+
+    &:focus {
+      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
+  }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.btn.disabled,
+fieldset:disabled a.btn {
+  pointer-events: none;
+}
+
+
+//
+// Alternate buttons
+//
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
+}
+
+
+//
+// Link buttons
+//
+// Make a button look and behave like a link
+.btn-link {
+  font-weight: 500;
+  color: $link-color;
+  text-decoration: $link-decoration;
+  position: relative;
+  padding-right: $input-btn-padding-y-sm;
+  padding-left: $input-btn-padding-y-sm;
+  @include proxima-nova-semibold();
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -12px;
+    top: 11px;
+    width: 7.5px;
+    height: 10px;
+    background-image: url("data:image/svg+xml,%3Csvg width='5px' height='10px' viewBox='0 0 5 10' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Design' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Home' transform='translate(-513.000000, -1623.000000)' fill='%23814EBF'%3E%3Cg id='Group-10' transform='translate(357.000000, 1617.000000)'%3E%3Cpath d='M160.919216,10.7909266 L156.474718,6.08501927 C156.422634,6.02987192 156.353183,6 156.277238,6 C156.201293,6 156.134003,6.02987192 156.079758,6.08731693 C156.027674,6.14246429 155.999461,6.21599997 155.999461,6.29641216 C155.999461,6.37683494 156.027674,6.44807179 156.079758,6.50550739 L160.32892,11 L156.081869,15.4990845 C156.029785,15.5542319 156.001572,15.6277676 156.001572,15.7058856 C156.001572,15.7840036 156.029785,15.8575451 156.084039,15.9149807 C156.136123,15.9701281 156.205574,16 156.281519,16 C156.357474,16 156.424754,15.9701281 156.478999,15.9149807 L160.923497,11.2090735 C161.025495,11.0941835 161.025495,10.905766 160.919157,10.7908713 L160.919216,10.7909266 Z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  @include hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  &:focus,
+  &.focus {
+    text-decoration: $link-hover-decoration;
+    box-shadow: none;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $btn-link-disabled-color;
+    pointer-events: none;
+  }
+
+  // No need for an active state here
+}
+
+
+//
+// Button Sizes
+//
+
+.btn-lg {
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+}
+
+.btn-sm {
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+}
+
+
+//
+// Block button
+//
+
+.btn-block {
+  display: block;
+  width: 100%;
+
+  // Vertically space out multiple block buttons
+  + .btn-block {
+    margin-top: $btn-block-spacing-y;
+  }
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}

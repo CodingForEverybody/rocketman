@@ -1,0 +1,29 @@
+{
+  "name": "rocketman",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "js": "parcel watch frontend/js/src/index.js --out-dir rocketman/static/js/ --no-hmr",
+    "js:prod": "parcel build frontend/js/src/index.js --out-dir rocketman/static/js/ --no-cache --no-source-maps",
+    "sass": "parcel watch frontend/scss/bootstrap.scss --out-dir rocketman/static/css/ --no-hmr",
+    "sass:prod": "parcel build frontend/scss/bootstrap.scss --out-dir rocketman/static/css/ --no-cache --no-source-maps",
+    "prod": "npm run js:prod && npm run sass:prod",
+    "watch": "npm run js & npm run sass"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "node-sass": "^4.11.0",
+    "parcel": "^1.12.3",
+    "parcel-bundler": "^1.12.4",
+    "popper.js": "^1.15.0",
+    "sass": "^1.17.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7"
+  },
+  "author": "Kalob Taulien"
+}

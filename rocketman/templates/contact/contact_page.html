@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags wagtailimages_tags widget_tweaks %}
+
+{% block content %}
+  <div class="row">
+    <div class="col">
+      <h1 class="cc-inner-title">{{ page.title }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="cc-contact-text">
+        {{ page.intro|richtext }}
+      </div>
+      <div class="d-none d-md-block">
+        <a href="{{ page.map_url }}" target='_blank'>
+          <picture>
+            {% image page.map_image fill-580x335 as img %}
+            <img src="{{ img.url }}" alt="{{ img.alt }}" style='width: 100%; height: auto;'>
+          </picture>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-6 mt-md-2 mt-0">
+      <form action="{% pageurl page %}" method="POST" role="form">
+        {% csrf_token %}
+
+          {% for field in form %}
+            <div class="row">
+                <div class="col-sm-12">
+                  {% if field|widget_type == 'textarea' %}
+                    <div class="form-group">
+                      <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}(required){% endif %}
+                      </label>
+                      {% render_field field class+="form-control" rows="6" placeholder=field.label %}
+                      {% if field.errors %}
+                        <small class="d-block text-danger text-small cc-font-light">
+                          {% for err in field.errors %}
+                            * {{ err|escape }}{% if not forloop.last %}<br />{% endif %}
+                          {% endfor %}
+                        </small>
+                      {% endif %}
+                      {% if field.help_text %}
+                        <small class="form-text text-muted cc-font-light">{{ field.help_text|safe }}</small>
+                      {% endif %}
+                    </div>
+                  {% else %}
+                    {% if field.label != '' %}
+                      <div class="form-group">
+                        <label for="{{ field.id_for_label }}">
+                          {{ field.label }}
+                          {% if field.field.required %}(required){% endif %}
+                        </label>
+                        {% render_field field class+="form-control" placeholder=field.label %}
+                        {% if field.errors %}
+                          <small class="d-block text-danger text-small cc-font-light">
+                            {% for err in field.errors %}
+                              * {{ err|escape }}{% if not forloop.last %}<br />{% endif %}
+                            {% endfor %}
+                          </small>
+                        {% endif %}
+                        {% if field.help_text %}
+                          <small class="form-text text-muted cc-font-light">{{ field.help_text|safe }}</small>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                </div>
+            </div>
+          {% endfor %}
+
+        <button type="submit" class="btn btn-primary btn-lg" style='padding-left: 3.5rem; padding-right: 3.5rem;'>Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

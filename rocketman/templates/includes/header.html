@@ -1,0 +1,27 @@
+{% load static menu_tags cache %}
+{% get_menu "header" as navigation %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="{% static 'images/logo.png' %}" alt="Rocketman">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav ml-auto">
+        {% cache 2592000 site_header %}
+          {% for item in navigation.menu_items.all %}
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ item.link }}" {% if item.open_in_new_tab %}target="_blank"{% endif %}>
+                {{ item.title }}
+              </a>
+            </li>
+          {% endfor %}
+        {% endcache %}
+      </ul>
+    </div>
+  </div>
+</nav>

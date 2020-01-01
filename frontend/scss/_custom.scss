@@ -1,0 +1,380 @@
+/**
+ * Banners
+ */
+.cc-home-banner {
+  background-size: cover !important;
+  background-position: center center !important;
+  height: 740px;
+}
+
+.cc-home-banner-title {
+  @include proxima-nova();
+  font-size: 64px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: $white;
+}
+
+@media(max-width: 640px) {
+  .cc-home-banner-title {
+    font-size: 45px;
+  }
+}
+
+/**
+ * Footer
+ */
+.cc-contact-footer-h2 {
+  @include proxima-nova-xbold();
+  font-size: 40px;
+  color: $white;
+}
+.cc-contact-footer-p {
+  @include proxima-nova-light();
+  font-size: 24px;
+  line-height: 1.33;
+  color: $white;
+}
+.cc-footer {
+  background-color: $black;
+  // padding-left: 140px;
+  .rich-text {
+    @include proxima-nova();
+    font-size: 16px;
+    line-height: 1.5;
+    color: $white;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .rich-text a {
+    color: $white;
+  }
+}
+.cc-footer-title {
+  @include proxima-nova-semibold();
+  font-size: 12px;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+  color: #858585;
+  margin-bottom: 13px;
+}
+
+@media(max-width: 768px) {
+  .cc-footer-title {
+    margin-top: 20px;
+  }
+}
+.cc-footer-link-lg {
+  @include proxima-nova();
+  font-size: 22px;
+  color: $white;
+  display: block;
+  padding-top: 3px;
+  padding-bottom: 4px;
+
+  &:hover {
+    color: $white;
+  }
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+}
+.cc-footer-copy {
+  @include proxima-nova();
+  font-size: 14px;
+  color: #858585;
+  margin-top: 15px;
+}
+.cc-footer-social-icon {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/**
+ * Image and text
+ */
+.cc-iat {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-bottom: 100px;
+}
+.cc-iat-image {
+  flex-basis: 65%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: 65%;
+  min-width: 65%;
+}
+.cc-iat-image-content {
+  flex-basis: 42%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: 42%;
+  min-width: 42%;
+  position: relative;
+  left: -140px;
+  bottom: -70px;
+  padding: 50px;
+  color: $white;
+}
+
+// Opposite modifier
+.cc-iat--right {
+  flex-direction: row-reverse;
+
+  .cc-iat-image-content {
+    left: initial;
+    right: -140px;
+  }
+}
+
+.cc-iat-title {
+  @include proxima-nova-xbold();
+  font-size: 34px;
+}
+.cc-iat-text {
+  @include proxima-nova-light();
+  font-size: 21px;
+  line-height: 1.43;
+}
+
+@media(max-width: 991px) {
+  .cc-iat {
+    display: block;
+    margin-bottom: -30px;
+  }
+  .cc-iat-image {
+    display: block;
+    width: 100%;
+    min-width: initial;
+  }
+  .cc-iat-image-content {
+    flex-basis: 100%;
+    width: 100%;
+    min-width: 100%;
+    position: relative;
+    left: 70px;
+    bottom: 70px;
+  }
+
+  .cc-iat--right {
+    .cc-iat-image-content {
+      left: -70px;
+    }
+  }
+}
+
+@media(max-width: 850px) {
+  .cc-iat-image-content {
+    display: block;
+    position: initial;
+    left: initial;
+    bottom: initial;
+    padding: 35px;
+  }
+}
+
+.cc-title-title,
+.cc-cta-title {
+  @include proxima-nova-light();
+  font-size: 30px;
+  line-height: 1.33;
+  text-align: center;
+  color: $black;
+}
+
+
+.cc-testimonial-title {
+  @include proxima-nova-black-italic();
+  font-size: 30px;
+  line-height: 1.37;
+  text-align: center;
+  color: #212b36;
+}
+.cc-testimonial-attribution {
+  @include proxima-nova-medium();
+  font-size: 18px;
+  letter-spacing: 1.75px;
+  text-align: center;
+  color: $black;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+/**
+ * Inner page properties
+ */
+.cc-inner-title {
+  @include proxima-nova-xbold();
+  font-size: 62px;
+  color: #212b36;
+
+  @media(max-width: 475px) {
+    font-size: 48px;
+  }
+}
+
+.cc-inner-subtitle {
+  @include proxima-nova-light();
+  font-size: 24px;
+  line-height: 1.42;
+  letter-spacing: normal;
+  color: $black;
+}
+
+/**
+ * Contact form styles
+ */
+.cc-contact-text,
+.cc-simple-richtext {
+  .rich-text {
+
+    p, ul, ol, li {
+      font-size: 24px;
+      line-height: 1.42;
+      @include proxima-nova-light();
+      color: $black;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @media(max-width: 475px) {
+        font-size: 18px;
+        line-height: 1.25;
+      }
+    }
+
+    li {
+      margin-bottom: 12px;
+      margin-top: 6px;
+      font-size: 90%;
+    }
+
+    p + p {
+      margin-top: 2rem;
+
+      @media(max-width: 475px) {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+.cc-contact-text .rich-text {
+  border-bottom: solid 1px #e2e2e2;
+  padding-bottom: 35px;
+  margin-bottom: 45px;
+}
+.cc-contact-text--submitted .rich-text {
+  border-bottom: 0;
+  padding-bottom: 25px;
+  margin-bottom: 0;
+}
+
+/**
+ * Custom table
+ */
+ .cc-table-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #dfe3e8;
+ }
+
+ .cc-table-row--no-border {
+  border-bottom: 0;
+}
+
+ .cc-table-cell {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  flex: 1 1 25%;
+}
+
+ .cc-table-cell {
+  @include proxima-nova-light();
+  font-size: 18px;
+  text-align: center;
+  color: $black;
+}
+
+ .cc-table-cell--row-footer,
+ .cc-table-cell--row-header {
+  @include proxima-nova-bold();
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: $black;
+  border-bottom: 0;
+}
+
+ .cc-table-cell--row-footer {
+   font-size: 21px;
+   padding-top: 25px;
+   padding-bottom: 0;
+ }
+
+ .cc-table-cell--col-header {
+  @include proxima-nova-light();
+  font-size: 18px;
+  font-weight: 300;
+  text-align: left;
+  color: $black;
+  flex-basis: 58%;
+  max-width: 58%;
+
+  > div {
+    max-width: 410px;
+  }
+}
+
+@media(max-width: 768px) {
+
+}
+
+/**
+ * Service page styles
+ */
+.cc-service-subtitle {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e2e2e2;
+  margin-bottom: 30px;
+}
+
+/**
+ * Custom font
+ */
+.cc-font-thin {
+  @include proxima-nova-thin();
+}
+
+.cc-font-light {
+  @include proxima-nova-light();
+}
+
+.cc-font-bold {
+  @include proxima-nova-bold();
+}
+
+/**
+ * Title block
+ */
+.cc-title-block {
+  margin-top: 115px;
+  margin-bottom: 115px;
+}
+
+@media(max-width:768px) {
+  .cc-title-block {
+    margin-top: 75px;
+    margin-bottom: 75px;
+  }
+}

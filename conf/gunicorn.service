@@ -1,0 +1,18 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=kalob
+Group=www-data
+WorkingDirectory=/home/kalob/rocketman
+ExecStart=/home/kalob/rocketman/rocketmanvenv/bin/gunicorn \
+        --access-logfile - \
+        --workers 3 \
+        --bind unix:/run/gunicorn.sock \
+        --timeout 60 \
+        rocketman.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
