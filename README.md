@@ -2,7 +2,9 @@
 
 View the production website at [rocketman.learnwagtail.com](http://rocketman.learnwagtail.com)
 
-> The purpose of this repository is to provide code support form the Wagtail for Beginners course.
+View the course at [https://learnwagtail.com/wagtail-for-beginners/](https://learnwagtail.com/wagtail-for-beginners/)
+
+> The purpose of this repository is to provide code support form the [Wagtail for Beginners course](https://learnwagtail.com/wagtail-for-beginners/).
 
 ## Installation
 There are several installation methods. For local development, you have three main options that are used in this course:
