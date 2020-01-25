@@ -1,5 +1,5 @@
 Django>=2.2,<2.3
-wagtail>=2.7,<2.8
+wagtail==2.8rc1
 django-extensions==2.2.1
 django-widget-tweaks==1.4.5
 sentry-sdk==0.13.5
