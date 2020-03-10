@@ -13,6 +13,7 @@ There are several installation methods. For local development, you have three ma
 ```bash
 python3 -m venv rocketmanvenv
 source rocketmanvenv/bin/activate
+python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
 ```
 
@@ -20,6 +21,7 @@ python manage.py runserver 0.0.0.0:8000
 ```bash
 pipenv install
 pipenv shell
+python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
 ```
 
@@ -27,6 +29,7 @@ python manage.py runserver 0.0.0.0:8000
 ```bash
 virtualenv rocketmanvenv
 source rocketmanvenv/bin/activate
+python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
 ```
 
