@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 wagtail = "==2.8"
-Django = "==2.2.10"
+Django = "==2.2.24"
 django-extensions = "==2.2.1"
 django-widget-tweaks = "==1.4.5"
 sentry-sdk = "==0.13.5"
