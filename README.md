@@ -1,5 +1,7 @@
 # Rocketman: A Wagtail for Beginners Course
 
+Hello there
+
 View the production website at [rocketman.learnwagtail.com](http://rocketman.learnwagtail.com)
 
 View the course at [https://learnwagtail.com/wagtail-for-beginners/](https://learnwagtail.com/wagtail-for-beginners/)
